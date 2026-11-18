@@ -1,0 +1,148 @@
+:root {
+  --wood: #2b1a10;
+  --wood2: #4a2c17;
+  --edge: #7a4a22;
+  --gold: #f0b64a;
+  --ink: #fbe9c4;
+  --neon: #5dff7a;
+  --violet: #b57aff;
+  --night: #1b1840;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  min-height: 100vh;
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(rgba(14, 8, 4, .62), rgba(14, 8, 4, .72)), url("../background.png") center / cover fixed no-repeat;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--neon); outline-offset: 2px; }
+
+.panel {
+  background: rgba(32, 18, 10, .9);
+  border: 4px solid var(--edge);
+  box-shadow: inset 0 0 0 2px rgba(240, 182, 74, .35), 0 6px 0 #140a05;
+  padding: 14px 16px;
+}
+
+/* هدر */
+.bar { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; justify-content: space-between; margin: 12px; }
+.brand h1 { margin: 0; font-family: "Silkscreen", monospace; font-size: 1.8rem; color: var(--gold); text-shadow: 3px 3px 0 #140a05; letter-spacing: 1px; direction: ltr; }
+.brand span { font-size: .9rem; opacity: .85; }
+nav { display: flex; gap: 8px; }
+.tab { background: var(--wood2); border: 3px solid var(--edge); padding: 6px 14px; }
+.tab.on { background: var(--night); border-color: var(--gold); }
+.tab em { font-style: normal; color: var(--neon); margin-inline-start: 6px; }
+.stats { display: flex; align-items: center; gap: 16px; }
+.stats b { color: var(--gold); font-family: "Silkscreen", monospace; }
+
+/* دکمه‌ها */
+.btn { background: var(--wood2); border: 3px solid var(--gold); padding: 8px 16px; box-shadow: 0 4px 0 #140a05; }
+.btn:hover { background: #6a3d1f; }
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #140a05; }
+.btn.big { width: 100%; font-weight: 900; background: #1f6b34; border-color: var(--neon); font-size: 1.05rem; }
+.btn.big:hover { background: #28823f; }
+.btn.small { padding: 3px 10px; font-size: .8rem; }
+.btn.danger { border-color: #e0584a; }
+
+/* چیدمان */
+main { padding: 0 12px 24px; }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 14px; }
+.side { display: flex; flex-direction: column; gap: 14px; }
+.tablewrap { overflow-x: auto; }
+
+/* جدول */
+#table { display: grid; grid-template-columns: repeat(18, minmax(46px, 1fr)); grid-template-rows: repeat(7, auto) 14px repeat(2, auto); gap: 3px; min-width: 900px; }
+.cell {
+  position: relative; aspect-ratio: 1 / 1; padding: 0;
+  background: color-mix(in srgb, var(--c) 55%, #1a0f08);
+  border: 2px solid color-mix(in srgb, var(--c) 80%, #000);
+  box-shadow: inset 3px 3px 0 rgba(255, 255, 255, .25), inset -3px -3px 0 rgba(0, 0, 0, .35);
+  display: flex; align-items: center; justify-content: center;
+}
+.cell b { font-family: "Silkscreen", monospace; font-size: 1.05rem; text-shadow: 2px 2px 0 rgba(0, 0, 0, .6); }
+.cell i { position: absolute; top: 2px; left: 4px; font: normal .55rem "Silkscreen", monospace; opacity: .85; }
+.cell:hover { filter: brightness(1.25); transform: translateY(-2px); z-index: 2; }
+.cell.sel { outline: 3px solid var(--neon); z-index: 3; }
+.flabel { align-self: center; font-size: .72rem; opacity: .8; text-align: center; }
+.legend { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .8rem; }
+.legend span { display: inline-block; width: 12px; height: 12px; margin-inline-end: 6px; border: 1px solid #000; }
+
+/* بوم‌های پیکسلی */
+canvas.pix { image-rendering: pixelated; width: 96px; height: 96px; background: rgba(0, 0, 0, .25); border: 3px solid var(--edge); }
+canvas.pix.big { width: 176px; height: 176px; }
+
+/* جزئیات */
+.hint { opacity: .8; margin: 6px 0; }
+.dhead { display: flex; gap: 14px; align-items: center; }
+.dhead .sym { font-family: "Silkscreen", monospace; font-size: 2.2rem; color: var(--gold); direction: ltr; text-align: right; }
+.dhead h2 { margin: 0; }
+dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 12px 0; }
+dt { opacity: .7; }
+dd { margin: 0; }
+.badge { padding: 1px 10px; border: 2px solid; font-weight: 700; }
+.badge.solid { color: #d7b98c; } .badge.liquid { color: #5fb8ff; } .badge.gas { color: #8cffc0; } .badge.unknown { color: #c9a0ff; }
+.note { margin: 0 0 12px; font-size: .9rem; }
+
+/* میز کیمیاگری */
+#mixer h3 { margin: 0 0 10px; }
+.slots { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+.slot { width: 96px; height: 120px; background: rgba(0, 0, 0, .35); border: 3px dashed var(--edge); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 1.6rem; }
+.slot.full { border-style: solid; border-color: var(--gold); font-size: 1rem; font-family: "Silkscreen", monospace; }
+.slot canvas.pix { width: 72px; height: 72px; border-width: 2px; }
+.plus { font-size: 1.5rem; color: var(--gold); }
+.mixmsg { min-height: 1.4em; margin: 10px 0 0; color: #ffd27a; font-size: .9rem; }
+
+/* کتاب کشفیات */
+.sub { opacity: .85; margin-top: 0; }
+.bookgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.bookcard { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px; background: var(--wood2); border: 3px solid var(--gold); }
+.bookcard canvas.pix { width: 88px; height: 88px; }
+.bookcard b { font-family: "Silkscreen", monospace; direction: ltr; font-size: 1.1rem; }
+.bookcard span { font-size: .8rem; text-align: center; }
+.bookcard em { font-style: normal; font-size: .75rem; color: var(--neon); }
+.bookcard.locked { border-color: var(--edge); opacity: .65; cursor: default; }
+.bookcard.locked em { color: #aaa; }
+.bookcard:not(.locked):hover { background: #6a3d1f; }
+
+/* دیالوگ‌ها */
+dialog { color: var(--ink); max-width: 540px; max-height: 92vh; overflow: auto; width: calc(100% - 24px); text-align: center; }
+dialog::backdrop { background: rgba(8, 4, 2, .75); }
+dialog .row { display: flex; gap: 10px; justify-content: center; }
+dialog dl { text-align: start; }
+.formula { font-family: "Silkscreen", monospace; font-size: 1.8rem; color: var(--gold); margin: 4px 0; direction: ltr; }
+.eq { background: rgba(0, 0, 0, .4); padding: 8px; border: 2px solid var(--edge); margin: 8px 0; font-size: 1.05rem; }
+.tag { display: inline-block; margin: 0 0 8px; padding: 2px 14px; border: 2px solid var(--edge); }
+.tag.new { border-color: var(--neon); color: var(--neon); font-weight: 900; animation: pop .6s steps(6) both; }
+#resultDlg canvas { animation: pop .7s steps(7) both; }
+.safety { text-align: center; font-size: .78rem; opacity: .8; margin: 16px 0 0; }
+.safety.inl { margin: 8px 0 12px; }
+
+/* انیمیشن */
+.burst { position: relative; height: 0; }
+.burst s { position: absolute; top: 120px; left: 50%; width: 8px; height: 8px; background: var(--gold); animation: fly .9s steps(8) both; animation-delay: var(--d); transform: rotate(var(--a)); }
+@keyframes pop { 0% { transform: scale(.2); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
+@keyframes fly { 0% { opacity: 1; transform: rotate(var(--a)) translateY(0); } 100% { opacity: 0; transform: rotate(var(--a)) translateY(-110px); } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+@media (max-width: 1100px) { .layout { grid-template-columns: 1fr; } }
+
+/* هاله‌ی زرد عناصر قابل ترکیب */
+.cell.canmix {
+  box-shadow: inset 3px 3px 0 rgba(255, 255, 255, .25), inset -3px -3px 0 rgba(0, 0, 0, .35), 0 0 0 2px #ffe14a, 0 0 10px 3px rgba(255, 225, 74, .8);
+  animation: halo 2.2s ease-in-out infinite alternate; z-index: 1;
+}
+@keyframes halo {
+  from { box-shadow: inset 3px 3px 0 rgba(255, 255, 255, .25), inset -3px -3px 0 rgba(0, 0, 0, .35), 0 0 0 2px #ffe14a, 0 0 5px 1px rgba(255, 225, 74, .55); }
+  to   { box-shadow: inset 3px 3px 0 rgba(255, 255, 255, .25), inset -3px -3px 0 rgba(0, 0, 0, .35), 0 0 0 2px #ffe14a, 0 0 14px 5px rgba(255, 225, 74, .95); }
+}
+.legend .halo-sw { border-radius: 50%; background: #ffe14a; box-shadow: 0 0 6px 2px rgba(255, 225, 74, .9); }
+
+/* امضا */
+.credit { max-width: 560px; margin: 8px auto 24px; text-align: center; }
+.credit p { margin: 2px 0; }
+.credit .c1 { font-size: .9rem; opacity: .85; }
+.credit .who { font-size: 1.5rem; font-weight: 900; color: var(--gold); text-shadow: 2px 2px 0 #140a05; }
+.credit .who::before, .credit .who::after { content: "★"; color: var(--neon); font-size: 1rem; margin: 0 10px; }
+.credit .c2 { font-size: .9rem; }

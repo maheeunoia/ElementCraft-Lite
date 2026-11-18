@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ElementCraft | کیمیاگری عناصر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="bar panel">
+  <div class="brand">
+    <h1>ElementCraft</h1>
+    <span>کیمیاگری جدول تناوبی</span>
+  </div>
+  <nav>
+    <button id="tabTable" class="tab on">جدول عناصر</button>
+    <button id="tabBook" class="tab">کتاب کشفیات <em id="bookCount">0/0</em></button>
+  </nav>
+  <div class="stats">
+    <span>سطح <b id="lvl">1</b></span>
+    <span>XP <b id="xp">0</b></span>
+    <button id="resetBtn" class="btn small danger">بازنشانی پیشرفت</button>
+  </div>
+</header>
+
+<main>
+  <section id="viewTable" class="layout">
+    <div class="panel tablewrap">
+      <div id="table" dir="ltr"></div>
+      <ul class="legend" id="legend"></ul>
+    </div>
+
+    <aside class="side">
+      <div class="panel" id="details">
+        <p class="hint">روی یک عنصر کلیک کن تا شکل ظاهری و اطلاعاتش را ببینی.</p>
+      </div>
+
+      <div class="panel" id="mixer">
+        <h3>میز کیمیاگری</h3>
+        <div class="slots">
+          <button class="slot" id="slot0" aria-label="جای اول">+</button>
+          <span class="plus">+</span>
+          <button class="slot" id="slot1" aria-label="جای دوم">+</button>
+        </div>
+        <button id="mixBtn" class="btn big">ترکیب کن</button>
+        <p id="mixMsg" class="mixmsg" role="status"></p>
+      </div>
+    </aside>
+  </section>
+
+  <section id="viewBook" class="panel" hidden>
+    <h2>کتاب کشفیات</h2>
+    <p class="sub">هر ترکیب جدید ۵۰ XP می‌دهد. روی یک ترکیب کشف‌شده کلیک کن تا دوباره بررسی‌اش کنی.</p>
+    <div id="bookGrid" class="bookgrid"></div>
+  </section>
+
+  <p class="safety">این بازی یک شبیه‌سازی آموزشی ساده‌شده است. هرگز بر اساس دستورهای بازی، واکنش شیمیایی را در دنیای واقعی انجام نده.</p>
+</main>
+
+<footer class="credit panel">
+  <p class="c1">این آزمایشگاه جادویی را ساخته است</p>
+  <p class="who">محمدامین مطور</p>
+  <p class="c2">دانش‌آموز کلاس هفتم، مدرسه‌ی شاهد هفتم تیر</p>
+</footer>
+
+<dialog id="resultDlg" class="panel"></dialog>
+
+<dialog id="resetDlg" class="panel">
+  <h3>پیشرفت پاک شود؟</h3>
+  <p>تمام کشفیات و XP حذف می‌شوند و برگشتی ندارد.</p>
+  <div class="row">
+    <button id="resetYes" class="btn danger">بله، پاک کن</button>
+    <button id="resetNo" class="btn">انصراف</button>
+  </div>
+</dialog>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/voxel.js"></script>
+<script src="assets/js/game.js"></script>
+</body>
+</html>
